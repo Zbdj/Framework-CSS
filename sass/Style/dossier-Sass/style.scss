@@ -1,0 +1,382 @@
+$bleu: #007bff;
+$rouge: #dc3545;
+$vert:  #28a745;
+$jaune :#ffc107;
+$rose: #e83e8c;
+$violet: #6f42c1;
+$blanc: #fff;
+$noir: #000000;
+
+html {
+    font-family: sans-serif;
+    line-height: 1.50;
+}
+
+.container
+{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+@media (min-width: 576px) {
+    .container {
+      max-width: 540px;
+    }
+    $total: 12;
+
+    @function colonne($col) {  
+    
+    @return percentage($col/$total);  
+    }
+    @for $i from 1 through $total {  
+    
+     .col-sm-#{$i} {width: colonne($i); flex: 0 0 colonne($i) };  
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      max-width: 720px;
+    }
+    $total: 12;
+
+    @function colonne($col) {  
+    
+    @return percentage($col/$total);  
+    }
+    @for $i from 1 through $total {  
+    
+     .col-md-#{$i} {width: colonne($i); flex: 0 0 colonne($i) };  
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .container {
+      max-width: 960px;
+    }
+    $total: 12;
+
+    @function colonne($col) {  
+    
+    @return percentage($col/$total);  
+    }
+    @for $i from 1 through $total {  
+    
+     .col-lg-#{$i} {width: colonne($i); flex: 0 0 colonne($i) };  
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1140px;
+    }
+    $total: 12;
+
+    @function colonne($col) {  
+    
+    @return percentage($col/$total);  
+    }
+    @for $i from 1 through $total {  
+    
+     .col-xl-#{$i} {width: colonne($i); flex: 0 0 colonne($i) };  
+    }
+  }
+  $total: 12;
+
+    @function colonne($col) {  
+    
+    @return percentage($col/$total);  
+    }
+    @for $i from 1 through $total {  
+    
+     .col-#{$i} {width: colonne($i); flex: 0 0 colonne($i) };  
+    }
+
+.container-fluid
+{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row
+{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+
+
+//Bouton taille et couleur
+@mixin button-bg($bg) {
+  background: $bg;
+  border-radius: 1.5rem;
+  line-height: 1.2em;
+  &:disabled, &.disabled
+  {
+    opacity: 0,65;
+    cursor: not-allowed;
+  }
+
+  &:hover{
+    background:darken($bg,8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background:darken($bg,25%);
+  }
+
+}
+
+.btn {
+ color:white;
+ text-decoration:none;
+ padding:5px 10px;
+ font-family: sans-serif;
+ font-size: 1.5em;
+
+ &-block
+ {
+   width: 100%;
+ }
+ &-xs {
+  font-size: 0.5rem;
+  line-height: 1.5;
+}
+
+&-sm {
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+&-lg {
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+&-xl {
+  font-size: 2rem;
+  line-height: 1.5;
+}
+}
+.btn-blue {
+   @include button-bg($bleu);
+}
+.btn-red {
+   @include button-bg($rouge);
+}
+.btn-green{
+   @include button-bg($vert);
+}
+.btn-yellow {
+   @include button-bg($jaune);
+}
+.btn-pink {
+  @include button-bg($rose);
+}
+.btn-purple {
+  @include button-bg($violet);
+}
+.btn-white {
+  @include button-bg($blanc);
+}
+.btn-black {
+  @include button-bg($noir);
+}
+
+//Image
+
+.img-rounded {
+  border-radius: 30px;
+  display: block;
+}
+.img-circle {
+  border-radius: 50%; 
+  display: block;
+}
+.img-thumbnail {
+    border: 1px solid $noir;
+    border-radius: 4px;
+    padding: 5px;
+    max-width: 100%;
+    display: block;
+
+  }
+.img-blur {
+filter: blur(5px);
+display: block;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+//Text couleur
+
+@mixin text($couleur)
+{
+  color :$couleur;
+}
+
+.text {
+&-muted {
+    @include text(#6c757d);
+  }
+&-primary {
+    @include text(#007bff);
+  }
+&-success {
+    @include text(#28a745);
+  }
+&-info {
+  @include text(#17a2b8);
+}
+&-warning {
+  @include text(#ffc107);
+}
+&-error {
+  @include text($rouge);
+}
+&-muted {
+  @include text(#6c757d);
+}
+}
+@mixin bg($color)
+{
+background-color :$color;
+}
+.bg {
+  &-muted {
+    @include bg(#6c757d);
+  }
+  &-primary {
+    @include bg(#007bff);
+  }
+  &-success {
+    @include bg(#28a745);
+  }
+  &-info {
+    @include bg(#17a2b8);
+  }
+  &-warning {
+    @include bg(#ffc107);
+  }
+  &-error {
+    @include bg(#dc3545);
+  }
+}
+//Alerte
+@mixin alert($couleur,$back,$border)
+{
+  color:$couleur;
+  background-color:$back;
+  border-color: $border;
+}
+.alert
+{
+  &-success {
+    @include alert(#155724,#d4edda,#c3e6cb);
+  }
+  &-info {
+    @include alert(#0c5460,#d1ecf1,#bee5eb);
+  }
+  &-warning {
+    @include alert(#856404,#fff3cd,#ffeeba);
+  }
+  &-danger {
+    @include alert(#721c24,#f8d7da,#f5c6cb);
+  }
+}
+
+//Visibilité
+@media (min-width: 576px) {
+  .visible-sm {
+    display: block!important;
+  }
+  .hidden-sm {
+    display: none!important;
+  }
+}
+
+@media (min-width: 768px) {
+  .visible-md{
+    display: block!important;
+  }
+  .hidden-md {
+    display: none!important;
+  }
+}
+
+@media (min-width: 992px) {
+  .visible-lg {
+    display: block!important;
+  }
+  .hidden-lg {
+    display: none!important;
+  }
+}
+@media (min-width: 1200px) {
+  .visible-xl {
+    display: block!important;
+  }
+  .hidden-xl {
+    display: none!important;
+  }
+}
+@media print {
+
+  .hidden-print {
+    display: none !important;
+  }
+
+  .visible-print-me {
+    display: block !important;
+  }
+}
+
+//Navbar
+$breakpoint: 799px;
+$nav-height: 70px;
+$nav-background: $noir;
+$nav-font-color: $blanc;
+$link-hover-color: $rose;
+
+nav {
+  float: left;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      float: left;
+      position: relative;
+      a {
+        display: block;
+        padding: 0 20px;
+        line-height: $nav-height;
+        background: $nav-background;
+        color: $nav-font-color;
+        text-decoration: none;
+        &:hover {
+          background: $link-hover-color;
+          color: $nav-font-color;
+        }
+      }
+        a {
+          padding: 15px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+.nav-dropdown {
+  position: absolute;
+}
